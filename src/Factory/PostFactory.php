@@ -38,14 +38,13 @@ final class PostFactory extends ModelFactory
 
     protected function getDefaults(): array
     {   
-        $category=$this->repo();
+        // $category=$this->repo();
         return [
             // TODO add your default values here (https://symfony.com/bundles/ZenstruckFoundryBundle/current/index.html#model-factories)
             'titre' => self::faker()->sentence(),
             'description' => self::faker()->sentence(),
             'createdAT' => new DateTime(),
-            'contenue' => self::faker()->text(),
-            // 'category'=> 
+            'contenue' => self::faker()->text()
         ];
     }
 

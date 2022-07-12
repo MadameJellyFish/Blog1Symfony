@@ -11241,6 +11241,42 @@ header.masthead .site-heading .h1 {
 .post-preview > .post-meta > a {
   text-decoration: none;
 }
+
+
+/* form contact */
+#post>div{
+  display: flex;
+  margin-bottom: 10px;
+}
+
+#post>div>label{
+  width: 150px;
+}
+
+#post>div>input, textarea{
+  width: 80%;
+}
+
+#post:last-child{
+  justify-content: center;
+  margin-left: 160px;
+}
+
+/* .errors {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #dc3545;
+  } */
+
+
+
+
+
+
+
+
 @media (min-width: 992px) {
   .post-preview > a > .post-title {
     font-size: 2.25rem;

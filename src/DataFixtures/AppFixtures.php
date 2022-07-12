@@ -26,8 +26,15 @@ class AppFixtures extends Fixture
         // }
 
         // $manager->flush();
-        PostFactory::createMany(10);
-        CategoryFactory::createMany(8);
+        CategoryFactory::createMany(5);
+
+        PostFactory::createMany(10, 
+        function(){
+            return ['category'=> CategoryFactory::random()];
+        });
+
+
+    
       
     }
 }

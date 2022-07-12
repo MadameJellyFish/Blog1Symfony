@@ -33,24 +33,21 @@ class ContactController extends AbstractController
         
         $submit = $request->get('submit');
         $errors=[];
+      
 
         if (!isset($submit)) {
             return $this->render('contact/create.html.twig');
         }
-       
+
 
         $name = trim($request->get('name'));
         if (empty($name)) {
             $errors['name']= 'A name is required';
-            // return $this->render('contact/create.html.twig', [
-            //     'contacts' => $contacts
-            // ]);
         }
 
         $email = trim($request->get('email'));
         if (empty($email)) {
             $errors['email']= 'An email is required';
-
         }
 
         $phone = trim($request->get('phone'));
@@ -63,7 +60,10 @@ class ContactController extends AbstractController
             $errors['message']='A message is required';
         }
 
+        $data=['name'=>$name, 'phone'=>$phone, 'email'=>$email, 'message'=>$message];
+
         if(empty($errors)){
+
             $contact=new Contact();
 
             $contact->setName($name);
@@ -74,9 +74,10 @@ class ContactController extends AbstractController
             $this->repo->add($contact, true);
             // dd($contact);
             return $this->redirect('/');
-        }else{
 
-            return $this->renderForm('/contact/create.html.twig');
+        }else{
+            // je dois mettre un tableau assosiative pour stockerles errors
+            return $this->renderForm('/contact/create.html.twig', ["errors"=>$errors, "data"=>$data]);
         }
         
 
