@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Post;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -12,10 +13,25 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('titre')
-            ->add('description')
-            ->add('createdAT')
-            ->add('contenue')
+            ->add('titre', options:[
+                "attr"=>["class"=>"form-control-mb4"],
+                "label_attr"=>["class"=>"form-label"]
+            ])
+
+            ->add('description', options:[
+                "attr"=>["class"=>"form-control-mb4"],
+                "label_attr"=>["class"=>"form-label"]
+            ])
+
+            ->add('contenue', options:[
+                "attr"=>["class"=>"form-control-mb4"],
+                "label_attr"=>["class"=>"form-label"]
+            ])
+
+            ->add('Envoyer', SubmitType::class, options:[
+                "attr"=>["class"=>"btn btn-primary text-uppercase disabled"]
+            ])
+
         ;
     }
 

@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Post;
 use App\Form\PostType;
 use App\Repository\PostRepository;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,7 +24,7 @@ class PostController extends AbstractController
     {   
         $posts=$this->repo->findAll();
         
-        return $this->render('post/index.html.twig', ['myposts'=>$posts]);
+        return $this->render('post/index.html.twig', ['posts'=>$posts]);
     }
 
 
@@ -38,8 +39,26 @@ class PostController extends AbstractController
 
         $form->handleRequest($request);
         // dd($request);
+        if($form->isSubmitted()&& $form->isValid()){
+
+            // ******ecrire 
+            $post->setCreatedAt(new DateTime()); 
+            $this->repo->add($post, true);
+
+            return $this->redirect('/');
+        }
 
         return $this->renderForm('post/create.html.twig', ['form'=>$form]);
+
+    }
+
+    #[ROUTE('post/{id}', name:'post.show', methods:['GET'])]
+    public function show($id): Response
+    {
+        $post = $this->repo->find($id);
+        return $this->render('post/show.html.twig', [
+            'post'=>$post
+        ]);
 
     }
 }
