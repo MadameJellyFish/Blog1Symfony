@@ -11262,13 +11262,20 @@ header.masthead .site-heading .h1 {
   margin-left: 160px;
 }
 
-/* .errors {
-    display: none;
-    width: 100%;
-    margin-top: 0.25rem;
-    font-size: 0.875em;
-    color: #dc3545;
-  } */
+/* form edit categories */
+.sup-mod-category{
+  display: flex;
+  gap: 20px;
+}
+
+.ajouter-cat{
+  margin: 50px 0;
+}
+
+.form-control{
+  margin: 10px 0 20px;
+}
+
 
 
 

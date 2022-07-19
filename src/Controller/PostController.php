@@ -12,53 +12,52 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PostController extends AbstractController
-{   
+{
     private PostRepository $repo;
     public function __construct(PostRepository $repo)
     {
-        $this->repo=$repo;
+        $this->repo = $repo;
     }
 
     #[Route('/', name: 'post.index')]
     public function index(): Response
-    {   
-        $posts=$this->repo->findAll();
-        
-        return $this->render('post/index.html.twig', ['posts'=>$posts]);
+    {
+        $posts = $this->repo->findAll();
+
+        return $this->render('post/index.html.twig', ['posts' => $posts]);
     }
 
 
-    #[Route('/post/create', name:"post.create", methods:['GET', 'POST'])]
-    public function create(Request $request):Response 
-    {   
+    #[Route('/post/create', name: "post.create", methods: ['GET', 'POST'])]
+    public function create(Request $request): Response
+    {
         // la class post, ou il y a le titre, la description, tout, je la crée et elle est vide
-        $post = new Post(); 
+        $post = new Post();
         // je vais reemplir la classe post avec la class postType qui a tous les champs du formulaire
         $form = $this->createForm(PostType::class, $post);
         // creeateForm cree le formulaire que je vais affciher, et va se resembler a $post
 
         $form->handleRequest($request);
         // dd($request);
-        if($form->isSubmitted()&& $form->isValid()){
+        if ($form->isSubmitted() && $form->isValid()) {
 
             // ******ecrire 
-            $post->setCreatedAt(new DateTime()); 
+            $post->setCreatedAt(new DateTime());
             $this->repo->add($post, true);
 
             return $this->redirect('/');
         }
 
-        return $this->renderForm('post/create.html.twig', ['form'=>$form]);
-
+        return $this->renderForm('post/create.html.twig', ['form' => $form]);
     }
 
-    #[ROUTE('post/{id}', name:'post.show', methods:['GET'])]
+    #[ROUTE('post/{id}', name: 'post.show', methods: ['GET'])]
     public function show($id): Response
-    {
+    {   
+        
         $post = $this->repo->find($id);
         return $this->render('post/show.html.twig', [
-            'post'=>$post
+            'post' => $post
         ]);
-
     }
 }

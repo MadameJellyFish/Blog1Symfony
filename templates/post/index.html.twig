@@ -2,17 +2,17 @@
 
 {% block header %}
 	<header class="masthead" style="background-image: url('{{asset('assets/img/home-bg.jpg')}}')">
-			<div class="container position-relative px-4 px-lg-5">
-				<div class="row gx-4 gx-lg-5 justify-content-center">
-					<div class="col-md-10 col-lg-8 col-xl-7">
-						<div class="site-heading">
-							<h1>The Posts</h1>
-							<span class="subheading">All our librarie of post</span>
-						</div>
+		<div class="container position-relative px-4 px-lg-5">
+			<div class="row gx-4 gx-lg-5 justify-content-center">
+				<div class="col-md-10 col-lg-8 col-xl-7">
+					<div class="site-heading">
+						<h1>The Posts</h1>
+						<span class="subheading">All our librarie of post</span>
 					</div>
 				</div>
 			</div>
-		</header>
+		</div>
+	</header>
 {% endblock %}
 
 {% block main %}
@@ -21,22 +21,40 @@
 		<div class="row gx-4 gx-lg-5 justify-content-center">
 			<div
 				class="col-md-10 col-lg-8 col-xl-7">
-				
+
 				{% for post in posts %}
+				
+									<div class="post-preview">
+										<a href="post/{{post.id}}">
+											<h2 class="post-title">{{post.titre}}</h2>
+											<h3 class="post-subtitle">{{post.description}}</h3>
+										</a>
+										<a href="/category/{{post.category.id}}">
+											<h4 class="post-subtitle small">{{post.category.name}}</h4>
+										</a>
+										<p class="post-meta">
+											<a href="#!">{{post.createdAT|date("m/d/Y")}}</a>
+										</p>
+										
+									</div>
+				
+								{% endfor %}
 
-					<div class="post-preview">
-						<a href="post/{{post.id}}">
-							<h2 class="post-title">{{post.titre}}</h2>
-							<h3 class="post-subtitle">{{post.description}}</h3>
+				{# {% for category in categories %}
+					<div class="post-preview category">
+						<a href="/category/{{categories.id}}">
+							<p class="post-subtitle type-category">{{categories.name}}</p>
 						</a>
-						<p class="post-meta">
-                    
-
-							<a href="#!">{{post.createdAT|date("m/d/Y")}}</a>
-						</p>
+						<div class="sup-mod-category">
+							<form action="/category/edit/{{categories.id}}" method="POST">
+								<button class="btn btn-info btn-cat" type="submit">MODIFY</button>
+							</form>
+							<form action="/category/delete/{{categories.id}}" method="POST">
+								<button class="btn btn-danger btn-cat" onclick="return confirm('Voulez-vous supprimer cette categorie ?')" type="submit">DELETE</button>
+							</form>
+						</div>
 					</div>
-
-				{% endfor %}
+				{% endfor %} #}
 
 				<!-- Pager-->
 				<div class="d-flex justify-content-end mb-4">
