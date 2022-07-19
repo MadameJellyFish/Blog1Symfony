@@ -22,7 +22,7 @@ class PostType extends AbstractType
 
             ->add('Category', EntityType::class, [
                 "class" => Category::class,
-                "choice_label" => "name" // choice_label correspond au nom de chacun de mes choix
+                "choice_label" => "name"// choice_label correspond au nom de chacun de mes choix
             ])
 
             ->add('description', options:[
@@ -36,7 +36,7 @@ class PostType extends AbstractType
             ])
 
             ->add('Envoyer', SubmitType::class, options:[
-                "attr"=>["class"=>"btn btn-primary text-uppercase disabled"]
+                "attr"=>["class"=>"btn btn-primary text-uppercase"]
             ])
 
         ;

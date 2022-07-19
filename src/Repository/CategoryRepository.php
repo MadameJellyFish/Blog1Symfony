@@ -39,6 +39,11 @@ class CategoryRepository extends ServiceEntityRepository
         }
     }
 
+    public function update()
+    {
+        $this->getEntityManager()->flush();
+    }
+
 //    /**
 //     * @return Category[] Returns an array of Category objects
 //     */

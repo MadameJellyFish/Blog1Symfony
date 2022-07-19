@@ -1,0 +1,37 @@
+{% extends "layout/default.html.twig" %}
+
+{% block header %}
+	<header class="masthead" style="background-image: url('{{asset('assets/img/about-bg.jpg')}}')">
+		<div class="container position-relative px-4 px-lg-5">
+			<div class="row gx-4 gx-lg-5 justify-content-center">
+				<div class="col-md-10 col-lg-8 col-xl-7">
+					<div class="site-heading">
+						<h1>Modify the List of Categories</h1>
+						<span class="subheading">Categories</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+{% endblock %}
+
+{% block main %}
+	<article class="mb-4">
+		<div class="container px-4 px-lg-5">
+			<div class="row gx-4 gx-lg-5 justify-content-center">
+				<div class="col-md-10 col-lg-8 col-xl-7">
+					<form action="/category/edit/{{category.id}}" method="POST">
+						<div class="content-form">
+							<label class="label-modify" for="">Modify Category: </label>
+							<input class="input-modify" name="nom" type="text" value="{{category.name}}" >
+						</div>
+                        <div class="content-btn-modify">
+						<button type="submit" class="btn btn-cat text-info bg-dark">SUBMIT</button>
+                        </div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</article>
+
+{% endblock %}

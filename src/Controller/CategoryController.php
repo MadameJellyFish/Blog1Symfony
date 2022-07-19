@@ -63,4 +63,26 @@ class CategoryController extends AbstractController
         return $this->redirect('/');
     }
 
+    // modifier
+    #[ROUTE('/category/edit/{id}', name:'category.edit', methods:['GET', 'POST'])]
+    public function edit($id, Request $request): Response
+    {
+        $category= $this->repo->find($id);
+        $nom=trim($request->get('nom'));
+        $submit=trim($request->get('submit'));
+        // je recupere le nom de la category avec l'input name et le get
+        if(isset($submit)&& !empty($nom)){
+        $category->setName($nom);
+        // je modifie la category avec le set
+        $this->repo->update();
+        // je la pousse dans la base de données 
+        return $this->redirect('/category');
+        }
+        // si le form est envoyé et si le nom et le champ n'est pas vide
+        return $this->render('/category/edit.html.twig', ['category'=>$category]);
+
+
+    }
+
+
 }
