@@ -11305,6 +11305,38 @@ header.masthead .site-heading .h1 {
   justify-content: end;
 }
 
+/* Register form */
+.content-register>form>div:first-child{
+  display: flex;
+  gap:50px;
+  margin-bottom: 20px;
+}
+
+.content-register>form>div:nth-child(2){
+  display: flex;
+  gap:93px;
+  margin-bottom: 20px;
+}
+
+.content-register>form>div:nth-child(3){
+  display: flex;
+  gap:55px;
+  margin-bottom: 20px;
+}
+
+.content-register>form>div:nth-child(4){
+  display: flex;
+  gap:30px;
+  justify-content: flex-end;
+}
+
+
+#registration_form_email, #registration_form_username, #registration_form_plainPassword{
+  width: 80%;
+}
+
+
+
 
 
 

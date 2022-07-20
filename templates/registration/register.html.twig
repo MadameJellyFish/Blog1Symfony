@@ -1,17 +1,43 @@
-<!DOCTYPE html>
+{% extends "layout/default.html.twig" %}
 
-<title>Register</title>
+{% block header %}
+	<header class="masthead" style="background-image: url('{{asset('assets/img/contact-bg.jpg')}}')">
+		<div class="container position-relative px-4 px-lg-5">
+			<div class="row gx-4 gx-lg-5 justify-content-center">
+				<div class="col-md-10 col-lg-8 col-xl-7">
+					<div class="site-heading">
+						<h1>New user</h1>
+						<span class="subheading">Registration</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</header>
+{% endblock %}
+{% block title %}New user
+{% endblock %}
 
-{% block body %}
-    <h1>Register</h1>
-
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
+{% block main %}
+	<article class="mb-4">
+		<div class="container px-4 px-lg-5">
+			<div class="row gx-4 gx-lg-5 justify-content-center">
+				<div class="col-md-10 col-lg-8 col-xl-7">
+					<h1 class="mb-4 ">Register</h1>
+                    <div class="content-register">
+					{{ form_start(registrationForm) }}
+                    {{form_row(registrationForm.username)}}
+					{{ form_row(registrationForm.email) }}
+					{{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+					{{ form_row(registrationForm.agreeTerms) }}
+                  
+					<button type="submit" class="btn btn-lg btn-primary mb-5 mt-3">REGISTER</button>
+                   
+					{{ form_end(registrationForm) }}
+                    </div>
+				</div>
+			</div>
+		</div>
+	</article>
 {% endblock %}
