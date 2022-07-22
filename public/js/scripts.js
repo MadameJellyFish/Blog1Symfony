@@ -26,4 +26,19 @@ window.addEventListener('DOMContentLoaded', () => {
         }
         scrollPos = currentTop;
     });
+
+    let inputComment = document.getElementById('#inputComment');
+    let btnComment = document.getElementById('#btnComment');
+
+    btnComment.addEventListener('click', getComment)
+
+    function getComment(){
+        inputComment.innerHTML='';
+        
+
+    }
+
+    
+
+    
 })

@@ -1,4 +1,5 @@
-{
+{   "troopers/ajax-bundle": "dev-master",
+
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
