@@ -37,10 +37,14 @@
 					</div>
 					{# <a class="btn btn-primary" href="/category/create">ADD CATEGORY</a> #}
 				{% endfor %}
+
+				{# {{form(form)}} #}
 					<div class="post-preview ">
-						<form class="ajouter-cat" action="/category/create" method="POST">
+						<form class="ajouter-cat" action="/category" method="POST">
+						{# {{form_start(form)}} #}
 							<label for="email">Add a new category: </label>
-							<input class="form-control" id="email" type="text" name="name" data-sb-validations="required,email"/>
+							{# <input class="form-control" id="email" type="text" name="name" data-sb-validations="required,email"/> #}
+							{{form_widget(form.name, {attr:{'class':'form-control'}})}}
 							<button class="btn btn-cat text-info bg-dark" type="submit">ADD CATEGORY</button>
 						</form>
 					</div>

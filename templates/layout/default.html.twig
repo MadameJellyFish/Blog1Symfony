@@ -37,6 +37,7 @@
 						<li class="nav-item">
 							<a class="nav-link px-lg-3 py-3 py-lg-4" href="/home/about">About</a>
 						</li>
+						{% if is_granted ('ROLE_USER') %}
 						<li class="nav-item">
 							<a class="nav-link px-lg-3 py-3 py-lg-4" href="/post/create">Créer un Post</a>
 						</li>
@@ -47,8 +48,13 @@
 							<a class="nav-link px-lg-3 py-3 py-lg-4" href="/contact/create">Contact</a>
 						</li>
 						<li class="nav-item">
+							<a class="nav-link px-lg-3 py-3 py-lg-4" href="/logout">Log Out</a>
+						</li>
+						{% else %}
+						<li class="nav-item">
 							<a class="nav-link px-lg-3 py-3 py-lg-4" href="/login">Login</a>
 						</li>
+						{% endif %}
 					</ul>
 				</div>
 			</div>

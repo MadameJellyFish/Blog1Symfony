@@ -10,7 +10,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\EntityFilter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
+#[IsGranted('ROLE_EDITOR')]
 class CategoryCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
@@ -21,14 +23,17 @@ class CategoryCrudController extends AbstractCrudController
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-        ->setSearchFields(['post.name', 'post.id']);
+        ->setSearchFields(['name', 'id']);
     }
     
     public function configureFilters(Filters $filters): Filters
     {
         return $filters
-        ->add('name')
-        ->add('id');
+        ->add('name');
+        // ->add('id');
+        // ->add('post');
+        // ->add(EntityFilter::new('post'))
+        // ;
     }
 
     public function configureFields(string $pageName): iterable
@@ -38,9 +43,13 @@ class CategoryCrudController extends AbstractCrudController
         //     TextField::new('title'),
         //     TextEditorField::new('description'),
         // ];
-        yield AssociationField::new('post');
-        yield TextField::new('name');
-        yield IdField::new('id');
+        // yield AssociationField::new('post');
+        return[
+            // yield IdField::new('id'),
+            yield TextField::new('name'),
+            // yield TextField::new('post');
+
+        ];
 
     }
 

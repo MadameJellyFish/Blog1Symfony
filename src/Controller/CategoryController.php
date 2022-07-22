@@ -18,26 +18,32 @@ class CategoryController extends AbstractController
         $this->repo = $repo;
     }
 
-    #[ROUTE('/category', name:'category.index')]
-    public function index(): Response
-    {
-        $categories=$this->repo->findAll();
-        return $this->render('category/index.html.twig', ['categories'=>$categories]);
-    }
+    // #[ROUTE('/category', name:'category.index')]
+    // public function index(): Response
+    // {
+    //     $categories=$this->repo->findAll();
+    //     return $this->render('category/index.html.twig', ['categories'=>$categories]);
+    // }
 
 
     // ajouter category
-    #[ROUTE('/category/create', name: 'category.create', methods: ['GET', 'POST'])]
+    #[ROUTE('/category', name: 'category.create', methods: ['GET', 'POST'])]
     public function create(Request $request): Response
     {
         $category = new Category();
         $form=$this->createForm(CategoryType::class, $category);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
+        
+        if(
+            $form->isSubmitted() 
+        // $form->isValid()
+        ){ 
+            //this is the way to keep in the bd $category
             $this->repo->add($category, true);
-            return $this->redirect('/');
+            return $this->redirect('/category');
         }
-        return $this->renderForm('category/create.html.twig', ['form'=>$form, 'category'=>$category]);
+        $categories =$this->repo->findAll();
+        return $this->renderForm('category/index.html.twig', ['form'=>$form, 'categories'=>$categories]);
     }
 
     #[ROUTE('/category/{id}', name: 'category.show', methods: ['GET'])]
