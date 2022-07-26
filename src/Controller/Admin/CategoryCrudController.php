@@ -32,7 +32,7 @@ class CategoryCrudController extends AbstractCrudController
         ->add('name');
         // ->add('id');
         // ->add('post');
-        // ->add(EntityFilter::new('post'))
+        
         // ;
     }
 

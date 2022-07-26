@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Post;
 use App\Form\PostType;
 use App\Repository\PostRepository;
@@ -27,7 +28,7 @@ class PostController extends AbstractController
         return $this->render('post/index.html.twig', ['posts' => $posts]);
     }
 
-    
+
     #[Route('/post/create', name: "post.create", methods: ['GET', 'POST'])]
     public function create(Request $request): Response
     {
@@ -54,10 +55,10 @@ class PostController extends AbstractController
     #[ROUTE('post/{id}', name: 'post.show', methods: ['GET'])]
     public function show($id): Response
     {   
-        
         $post = $this->repo->find($id);
         return $this->render('post/show.html.twig', [
             'post' => $post
         ]);
+
     }
 }

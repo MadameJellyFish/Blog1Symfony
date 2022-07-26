@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\EmailField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 
 #[IsGranted('ROLE_ADMIN')]
 class UserCrudController extends AbstractCrudController
@@ -17,7 +18,6 @@ class UserCrudController extends AbstractCrudController
         return User::class;
     }
 
-    
     public function configureFields(string $pageName): iterable
     {
 
@@ -27,6 +27,7 @@ class UserCrudController extends AbstractCrudController
             yield TextField::new('username'),
             yield ArrayField::new('roles'),
             yield EmailField::new('email'),
+            yield TextField::new('password')
         ];
         // return [
         //     IdField::new('id'),

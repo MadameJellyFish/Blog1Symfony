@@ -27,18 +27,34 @@ window.addEventListener('DOMContentLoaded', () => {
         scrollPos = currentTop;
     });
 
-    let inputComment = document.getElementById('#inputComment');
-    let btnComment = document.getElementById('#btnComment');
-
+  
+    let inputComment = document.getElementById('inputComment');
+    let postId= inputComment.getAttribute('data-id');
+    let btnComment = document.getElementById('btnComment');
+    let containerComment = document.getElementsByClassName('containerComment');
+    
+    
+    
     btnComment.addEventListener('click', getComment)
-
     function getComment(){
-        inputComment.innerHTML='';
+        
+        // fetch retourn une promesse
+        fetch('/comment/create/'+ postId)
+        .then(function(Response){
+            return Response.json();
+        }).then(function (data){
+            // console.log(data)
+            containerComment.innerHTML='';
+            for(comment of data){
+                containerComment.innerHTML+= '<div class="itemComment"><p class="text">'+comment.contenue+'</p><span class="date">'+comment.createdAt+'</span></div>';
+            }
+            
+        })
         
 
     }
 
-    
+
 
     
 })

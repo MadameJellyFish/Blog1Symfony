@@ -11335,6 +11335,49 @@ header.masthead .site-heading .h1 {
   width: 80%;
 }
 
+/* comments */
+.container-structure-comment{
+  margin: 50px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.itemComment{
+  border: 1px solid #0085a1;
+  padding: 0 25px;
+  border-radius: 5px;
+  margin: 50px 0;
+  width: 600px;
+  margin-left: 50px;
+  -webkit-box-shadow: 5px 5px 0px 0px #289FED, 10px 10px 0px 0px #5FB8FF, 15px 15px 0px 0px #A1D8FF, 5px 5px 15px 5px rgba(0,0,0,0); 
+  box-shadow: 5px 5px 0px 0px #289FED, 10px 10px 0px 0px #5FB8FF, 15px 15px 0px 0px #A1D8FF, 5px 5px 15px 5px rgba(0,0,0,0);
+}
+
+.text{
+  font-size: 0.8em;
+  text-align: justify;
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.date{
+  font-weight: 700;
+  text-align: right;
+  font-size: 0.8em;
+  display: block;
+  justify-content: right;
+  margin-bottom: 15px;
+}
+
+#inputComment{
+  margin: 20px 0;
+}
+
+#btnComment{
+  width: 30%;
+  margin: 0 auto;
+}
+
 
 
 
