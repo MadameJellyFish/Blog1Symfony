@@ -39,20 +39,20 @@
 					<hr>
 					<div class="container px-4 px-lg-5 container-structure-comment">
 						<label for="">Add a new comment:</label>
-						<input type="textarea" placeholder="Write your comment here" name="commentaire" id="inputComment" data-id="{{post.id}}">
+						<textarea type="textarea" placeholder="Write your comment here" value="textarea" id="inputComment" data-id="{{post.id}}"></textarea>
 						<button type="button" class="btn-primary text-uppercase" id="btnComment">OK</button>
 					</div>
 
+						<div class="containerComment post-preview">
 					{% for comment in post.comments %}
 
-						<div class="containerComment post-preview">
 							<div class="itemComment">
 								<p class="text">{{comment.contenue}}</p>
-								<span class=" date">{{comment.createdAt|date("m/d/Y")}}
+								<span class=" date"> <span class="published"> Published on </span>{{comment.createdAt|date("m/d/Y")}}
 								</span>
 							</div>
-						</div>
 					{% endfor %}
+						</div>
 
 				</div>
 			</div>

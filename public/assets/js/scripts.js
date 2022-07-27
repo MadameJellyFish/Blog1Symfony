@@ -7,9 +7,9 @@ window.addEventListener('DOMContentLoaded', () => {
     let scrollPos = 0;
     const mainNav = document.getElementById('mainNav');
     const headerHeight = mainNav.clientHeight;
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         const currentTop = document.body.getBoundingClientRect().top * -1;
-        if ( currentTop < scrollPos) {
+        if (currentTop < scrollPos) {
             // Scrolling Up
             if (currentTop > 0 && mainNav.classList.contains('is-fixed')) {
                 mainNav.classList.add('is-visible');
@@ -27,34 +27,43 @@ window.addEventListener('DOMContentLoaded', () => {
         scrollPos = currentTop;
     });
 
-  
+
     let inputComment = document.getElementById('inputComment');
-    let postId= inputComment.getAttribute('data-id');
+    let postId = inputComment.getAttribute('data-id');
     let btnComment = document.getElementById('btnComment');
-    let containerComment = document.getElementsByClassName('containerComment');
     
     
     
     btnComment.addEventListener('click', getComment)
-    function getComment(){
+    function getComment() {
         
         // fetch retourn une promesse
-        fetch('/comment/create/'+ postId)
-        .then(function(Response){
-            return Response.json();
-        }).then(function (data){
-            // console.log(data)
-            containerComment.innerHTML='';
-            for(comment of data){
-                containerComment.innerHTML+= '<div class="itemComment"><p class="text">'+comment.contenue+'</p><span class="date">'+comment.createdAt+'</span></div>';
-            }
-            
+        // method tout ça pour recuperer les argements aves les parametres facultatives
+        fetch('/comment/create/' + postId, {
+            method: "POST",
+            headers: { "content-type": 'Applications/json' },
+            body: JSON.stringify({
+                'textareaComment': inputComment.value
+            })
         })
-        
+        .then(function (response) {
+            return response.json();
+        }).then(function (data) {
+                let containerComment = document.querySelector('.containerComment');
+                // console.log(containerComment);
+                containerComment.innerHTML = '';
+                for (comment of data) {
+                    containerComment.innerHTML += '<div class="itemComment"><p class="text">'
+                        + comment.contenue + '</p><span class="date"><span class="published"> Published on </span>'
+                        + comment.createdAt + '</span></div>';
+                    
+                }
+            })
+
 
     }
 
 
 
-    
+
 })
