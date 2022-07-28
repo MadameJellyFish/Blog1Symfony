@@ -11374,6 +11374,11 @@ header.masthead .site-heading .h1 {
   margin-bottom: 15px;
 }
 
+.qualification{
+  margin-bottom: 15px;
+  text-align: right;
+}
+
 #inputComment{
   margin: 20px 0;
   width: 100%;
@@ -11382,6 +11387,18 @@ header.masthead .site-heading .h1 {
 #btnComment{
   width: 30%;
   margin: 0 auto;
+}
+
+#btnLike{
+ border-style: none;
+ position: absolute;
+}
+
+#nbLikes{
+  font-size: 0.7rem;
+  position: relative;
+  bottom:12px;
+  left:2px;
 }
 
 

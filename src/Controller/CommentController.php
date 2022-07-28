@@ -54,11 +54,8 @@ class CommentController extends AbstractController
             $allComments[]=[
             'id'=> $comment->getId(),
             'createdAt'=> $comment->getCreatedAt(),
-            'contenue'=> $comment->getContenue(),
+            'contenue'=> $comment->getContenue()
         ];}
         return $this->json($allComments);
-
-
     }
-
 }

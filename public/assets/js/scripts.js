@@ -31,7 +31,8 @@ window.addEventListener('DOMContentLoaded', () => {
     let inputComment = document.getElementById('inputComment');
     let postId = inputComment.getAttribute('data-id');
     let btnComment = document.getElementById('btnComment');
-    
+    let btnLike = document.getElementById('btnLike');
+    let nbLikes = document.getElementById('nbLikes');
     
     
     btnComment.addEventListener('click', getComment)
@@ -59,10 +60,18 @@ window.addEventListener('DOMContentLoaded', () => {
                     
                 }
             })
-
-
     }
 
+    btnLike.addEventListener('click', getLike)
+    function getLike(){
+        fetch('/like/create/'+ postId)
+        .then(function (response) {
+            return response.json();
+        }).then(function (data) {
+            console.log(data);
+            // let qualification = document.querySelector('.qualification');
+        })
+    }
 
 
 

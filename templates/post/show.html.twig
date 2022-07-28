@@ -36,6 +36,10 @@
 						&middot; Images by
 						<a href="https://www.flickr.com/photos/nasacommons/">NASA on The Commons</a>
 					</p>
+					<div class="qualification">
+						<button type="button" id="btnLike" data-id="{{post.id}}">
+							&#10084<span id="nbLikes" value="spanNbLikes" >2</span> Love it</button>
+					</div>
 					<hr>
 					<div class="container px-4 px-lg-5 container-structure-comment">
 						<label for="">Add a new comment:</label>
@@ -43,16 +47,21 @@
 						<button type="button" class="btn-primary text-uppercase" id="btnComment">OK</button>
 					</div>
 
-						<div class="containerComment post-preview">
-					{% for comment in post.comments %}
+					<div class="containerComment post-preview">
+						{% for comment in post.comments %}
 
 							<div class="itemComment">
 								<p class="text">{{comment.contenue}}</p>
-								<span class=" date"> <span class="published"> Published on </span>{{comment.createdAt|date("m/d/Y")}}
+								<span class=" date">
+									<span class="published">
+										Published on
+									</span>
+									{{comment.createdAt|date("m/d/Y")}}
 								</span>
 							</div>
-					{% endfor %}
-						</div>
+
+						{% endfor %}
+					</div>
 
 				</div>
 			</div>
