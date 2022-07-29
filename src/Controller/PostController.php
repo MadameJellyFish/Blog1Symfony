@@ -30,41 +30,33 @@ class PostController extends AbstractController
     }
 
 
-    #[Route('/post/create', name: "post.create", methods: ['GET', 'POST'])]
-    public function create(Request $request): Response
-    {
-        // la class post, ou il y a le titre, la description, tout, je la crée et elle est vide
-        $post = new Post();
-        // je vais reemplir la classe post avec la class postType qui a tous les champs du formulaire
-        $form = $this->createForm(PostType::class, $post);
-        // creeateForm cree le formulaire que je vais affciher, et va se resembler a $post
+    // #[Route('/post/create', name: "post.create", methods: ['GET', 'POST'])]
+    // public function create(Request $request): Response
+    // {
+    //     // la class post, ou il y a le titre, la description, tout, je la crée et elle est vide
+    //     $post = new Post();
+    //     // je vais reemplir la classe post avec la class postType qui a tous les champs du formulaire
+    //     $form = $this->createForm(PostType::class, $post);
+    //     // creeateForm cree le formulaire que je vais affciher, et va se resembler a $post
 
-        $form->handleRequest($request);
-        // dd($request);
-        if ($form->isSubmitted() && $form->isValid()) {
+    //     $form->handleRequest($request);
+    //     // dd($request);
+    //     if ($form->isSubmitted() && $form->isValid()) {
 
-            // ******ecrire 
-            $post->setCreatedAt(new DateTime());
-            $this->repo->add($post, true);
+    //         // ******ecrire 
+    //         $post->setCreatedAt(new DateTime());
+    //         $this->repo->add($post, true);
 
-            return $this->redirect('/');
-        }
+    //         return $this->redirect('/');
+    //     }
 
-        return $this->renderForm('post/create.html.twig', ['form' => $form]);
-    }
+    //     return $this->renderForm('post/create.html.twig', ['form' => $form]);
+    // }
 
     #[ROUTE('post/{id}', name: 'post.show', methods: ['GET'])]
     public function show($id): Response
     {   
         $post = $this->repo->find($id);
-        // $post = new Post;
-        // $like = $post->getLikes();
-
-        // $allLikes = count($post->getLikes());
-     
-        
-        
-
         return $this->render('post/show.html.twig', [
             'post' => $post
         ]);

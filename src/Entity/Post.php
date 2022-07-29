@@ -37,6 +37,9 @@ class Post
     #[ORM\OneToMany(mappedBy: 'post', targetEntity: Like::class)]
     private $likes;
 
+    #[ORM\Column(type: 'string', length: 255, nullable: true)]
+    private $imageFileName;
+
     
 
 
@@ -174,6 +177,18 @@ class Post
                 $like->setPost(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getImageFileName(): ?string
+    {
+        return $this->imageFileName;
+    }
+
+    public function setImageFileName(?string $imageFileName): self
+    {
+        $this->imageFileName = $imageFileName;
 
         return $this;
     }

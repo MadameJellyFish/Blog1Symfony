@@ -10,6 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Filter\EntityFilter;
@@ -50,8 +51,10 @@ class PostCrudController extends AbstractCrudController
         [   yield AssociationField::new('category'),
             // yield IdField::new('id');
             yield TextField::new('titre'),
-            yield TextEditorField::new('description'),
-            yield TextField::new('contenue'),
+            yield TextField ::new('description'),
+            yield TextEditorField::new('contenue'),
+            yield DateTimeField::new('createdAt'), 
+            yield ImageField::new('ImageFileName')->setBasePath('uploads/images')->setUploadDir('public/uploads/images')
         ];
       
         
