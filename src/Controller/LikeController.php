@@ -5,11 +5,13 @@ namespace App\Controller;
 use App\Entity\Like;
 use App\Repository\LikeRepository;
 use App\Repository\PostRepository;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+// #[IsGranted ('ROlE_USER')]
 class LikeController extends AbstractController
 {   
     
@@ -39,7 +41,7 @@ class LikeController extends AbstractController
         // dd($like);
         if ($like==null) {
             // ajout
-            $like = new like;
+            $like = new Like;
             $like->setUser($this->getUser());
             $like->setPost($post);
 
@@ -51,6 +53,8 @@ class LikeController extends AbstractController
     
         $nbLikes = count($post->getLikes());
         return $this->json(['nbLikes'=>$nbLikes]);
+        // data est nbLikes en js
         
+
     }
 }

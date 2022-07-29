@@ -14,7 +14,7 @@ window.addEventListener('DOMContentLoaded', () => {
             if (currentTop > 0 && mainNav.classList.contains('is-fixed')) {
                 mainNav.classList.add('is-visible');
             } else {
-                console.log(123);
+                // console.log(123);
                 mainNav.classList.remove('is-visible', 'is-fixed');
             }
         } else {
@@ -26,7 +26,6 @@ window.addEventListener('DOMContentLoaded', () => {
         }
         scrollPos = currentTop;
     });
-
 
     let inputComment = document.getElementById('inputComment');
     let postId = inputComment.getAttribute('data-id');
@@ -56,8 +55,7 @@ window.addEventListener('DOMContentLoaded', () => {
                 for (comment of data) {
                     containerComment.innerHTML += '<div class="itemComment"><p class="text">'
                         + comment.contenue + '</p><span class="date"><span class="published"> Published on </span>'
-                        + comment.createdAt + '</span></div>';
-                    
+                        + comment.createdAt + '</span></div>'; 
                 }
             })
     }
@@ -69,6 +67,14 @@ window.addEventListener('DOMContentLoaded', () => {
             return response.json();
         }).then(function (data) {
             console.log(data);
+            nbLikes.innerHTML=data.nbLikes;
+            if(data.nbLikes < 1){
+                console.log(nbLikes);
+                nbLikes.style.display="none";
+               }else{
+                nbLikes.style.display="inline-block";
+               }
+           
             // let qualification = document.querySelector('.qualification');
         })
     }

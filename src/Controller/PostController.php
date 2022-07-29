@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Comment;
+use App\Entity\Like;
 use App\Entity\Post;
 use App\Form\PostType;
 use App\Repository\PostRepository;
@@ -56,9 +57,19 @@ class PostController extends AbstractController
     public function show($id): Response
     {   
         $post = $this->repo->find($id);
+        // $post = new Post;
+        // $like = $post->getLikes();
+
+        // $allLikes = count($post->getLikes());
+     
+        
+        
+
         return $this->render('post/show.html.twig', [
             'post' => $post
         ]);
+
+       
 
     }
 }
