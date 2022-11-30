@@ -18,13 +18,13 @@ class ContactController extends AbstractController
     }
 
 
-    #[Route('/contact', name: 'contact.index')]
-    public function index(): Response
-    {
-        return $this->render('contact/create.html.twig', [
-            'controller_name' => 'ContactController',
-        ]);
-    }
+    // #[Route('/contact', name: 'contact.index')]
+    // public function index(): Response
+    // {
+    //     return $this->render('contact/create.html.twig', [
+    //         'controller_name' => 'ContactController',
+    //     ]);
+    // }
 
 
     #[ROUTE('/contact/create', name: 'contact.create', methods: ['POST', 'GET'])]

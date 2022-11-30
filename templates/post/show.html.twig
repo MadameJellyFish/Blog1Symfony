@@ -57,7 +57,6 @@
 
 					<div class="containerComment post-preview">
 						{% for comment in post.comments %}
-
 							<div class="itemComment">
 								<p class="text">{{comment.contenue}}</p>
 								<span class=" date">
@@ -67,7 +66,6 @@
 									{{comment.createdAt|date("m/d/Y")}}
 								</span>
 							</div>
-
 						{% endfor %}
 					</div>
 
